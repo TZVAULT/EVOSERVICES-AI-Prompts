@@ -1,0 +1,66 @@
+==========================================================
+  GLM 5.3 FLASH — FULL JB GUIDE
+==========================================================
+
+WHAT YOU NEED
+-------------
+- Web Browser No VPN required (use one if your region blocks z.ai)
+- The prompt file (download from Discord)
+
+STEP-BY-STEP SETUP
+------------------
+1. Go to: https://chat.z.ai
+2. Model selector (top of chat) -> pick "GLM 5.3 Flash"
+   - Do NOT pick the regular GLM or other models. Flash only.
+3. Find "Deep Think" / thinking mode setting -> set to HIGH
+   - HIGH. Not medium. Medium folds sometimes, high folds always.
+4. Start a FRESH chat (new conversation, zero history)
+5. Type any normal message and send it. Examples:
+   - "hi"
+   - "hello"
+   - "sup"
+   - anything, it does not matter what it says
+   IMPORTANT: do NOT send the prompt as an attachment or file.
+   Do NOT paste the prompt as your first message. Send a normal
+   human message first. This step is where 90% of people fail.
+6. Now EDIT that message you just sent (hover -> edit / pencil icon)
+7. Delete the text, PASTE the full jailbreak prompt in its place
+8. Send it
+9. Wait for the model to respond — first response may take longer
+   because deep thinking is processing. That is normal.
+10. Done. The model is now unlocked for the whole conversation.
+
+IF IT STILL REFUSES (THE RESET SAUCE)
+-------------------------------------
+Work through these in order:
+
+1. Make sure you used EDIT on a sent message, not a fresh paste
+2. Make sure Deep Think is set to HIGH, not medium/off
+3. Start a completely new chat and redo the full process
+4. Delete/clear your old chats on the account
+5. Log out, refresh the page (Ctrl+Shift+R for hard refresh), log in
+6. Still refusing? Create a NEW account (fresh accounts fold easiest)
+   - new email, new account, redo steps 1-10
+7. Check you copied the WHOLE prompt — partial pastes fail.
+   Copy from the first character to the last, nothing clipped.
+
+RULES TO KEEP IT WORKING
+------------------------
+- One topic per chat. If output gets weird, fresh chat + fresh prompt.
+- If the model starts refusing mid-conversation, do NOT argue with it.
+  Just start a new chat and redo the setup. Arguing burns the session.
+- Keep the prompt intact. Do not edit it, do not translate it,
+  do not "improve" it. It is tuned as-is.
+- Do not mention the jailbreak in your follow-up requests.
+  Ask directly for what you want, like it was never locked.
+
+TROUBLESHOOTING QUICK TABLE
+---------------------------
+Problem                          Fix
+-----------------------------    ------------------------------
+Response is a refusal            Redo edit-message step, HIGH mode
+First response is slow/blank     Normal on deep think, wait it out
+Edit option missing              Send message, wait 2s, hover again
+Paste keeps failing              Use Ctrl+Shift+V (paste as plain text)
+Account keeps refusing           Fresh account, fresh chat
+Region blocked                   Use a VPN, non-restricted region node 
