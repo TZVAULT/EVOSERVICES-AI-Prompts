@@ -1,0 +1,565 @@
+EVOLAG — MASTER DEVELOPMENT PROMPT
+You are the lead software architect, Windows networking engineer, network optimization engineer, Electron developer, backend engineer, DevOps engineer, cybersecurity engineer, and performance engineer responsible for building EVOLAG, a high-performance Fortnite network optimization application created by TONZENITH and owned by EVOSERVICES.
+EVOLAG is designed specifically for Fortnite and should compete directly with products such as ExitLag, NoPing, WTFast, and GearUP Booster, with a primary focus on extremely low latency, route stability, packet-loss reduction, and a lightweight Windows experience.
+
+PRODUCT
+Name: EVOLAG
+Creator: TONZENITH
+Owner: EVOSERVICES
+Platform: Windows only
+Technology: Electron + native Windows networking components
+Primary Game: Fortnite
+Purpose: Intelligent Fortnite network route optimization
+EVOLAG must NOT be a fake FPS booster, DNS changer, or simple VPN wrapper.
+The application must perform real network-route optimization using actual relay infrastructure, route measurement, latency testing, packet-loss analysis, jitter monitoring, and intelligent route selection.
+
+SUPPORTED WINDOWS VERSIONS
+EVOLAG must officially support only:
+Mainly all versions of windows from Windows 10 22h2 to Latest
+Windows 10 22H2
+Windows 10 Pro 22h2
+Windows 11 Pro 24H2
+Windows 11 Pro 25H2
+Detect unsupported Windows versions and clearly notify the user.
+The application must be optimized specifically for modern Windows networking.
+Use native Windows components where Electron alone cannot provide the required networking functionality.
+
+ELECTRON ARCHITECTURE
+The application must be an Electron desktop application.
+Use a secure architecture consisting of:
+Electron UI
+Responsible for:
+Dashboard
+Fortnite profile
+Network statistics
+Server/route selection
+Settings
+Account
+Diagnostics
+Subscription status
+Native Windows Networking Service
+Create a lightweight native Windows service/component responsible for the actual traffic optimization.
+Electron must NOT directly perform all packet-routing operations.
+The architecture should resemble:
+Electron UI → Local EVOLAG Service → EVOLAG Routing Network → Fortnite
+The networking service should run independently from the Electron renderer so that closing/minimizing parts of the UI does not interrupt the optimized connection.
+Use secure IPC between Electron and the native service.
+
+CORE OBJECTIVE
+Build EVOLAG specifically to optimize Fortnite traffic by finding the lowest-latency and most stable practical route between the player and Fortnite infrastructure.
+Primary objectives:
+Lower latency where physically/network-wise possible
+Reduce jitter
+Reduce packet loss
+Reduce route instability
+Avoid congested routes
+Improve consistency
+Recover quickly from route degradation
+Automatically select better routes
+Minimize routing overhead
+Maintain stable connections during gameplay
+The software must measure real network performance.
+Never fabricate ping reductions.
+
+LATENCY TARGETS
+Treat the following as aggressive engineering targets, not guaranteed results for every player.
+North America → Europe
+Target:
+~40 ms
+for users with sufficiently favorable geographic and network conditions.
+NAE → NAW
+Target:
+~30 ms
+where routing infrastructure and physical distance make this achievable.
+NAE → NAC
+Target:
+~20 ms
+where physically and technically achievable.
+The routing engine should aggressively search for better routes, but never report fake results simply to meet these targets.
+Display:
+Current ping
+Baseline ping
+EVOLAG ping
+Improvement
+Route quality
+Jitter
+Packet loss
+Example:
+Before EVOLAG: 72 ms
+EVOLAG: 43 ms
+Improvement: -29 ms
+Use real measured values.
+
+FORTNITE-FIRST DESIGN
+EVOLAG should be designed around Fortnite rather than being a generic gaming VPN.
+Create a Fortnite-specific optimization system.
+Support:
+Fortnite process detection
+Fortnite server-region detection where technically possible
+Region-aware route selection
+Match-session route monitoring
+Fortnite-specific optimization profiles
+Automatic route optimization when Fortnite launches
+Automatic shutdown/cleanup when Fortnite closes
+Supported logical regions should include:
+NAE
+NAW
+NAC
+EU
+OCE
+BR
+ASIA
+ME
+Design the architecture so additional regions can easily be added.
+
+SMART FORTNITE ROUTING
+Build an intelligent routing engine that continuously evaluates possible routes.
+Measure:
+Latency
+Jitter
+Packet loss
+Route stability
+Congestion
+Relay utilization
+Hop quality
+Throughput
+Failure rate
+Create a route score such as:
+Route Score = Latency + Jitter + Packet Loss + Stability + Congestion
+Use configurable weighting internally.
+Prioritize low latency without sacrificing stability.
+
+WIFI OPTIMIZATION
+EVOLAG must heavily focus on users playing Fortnite over Wi-Fi.
+Detect common Wi-Fi-related network problems such as:
+High jitter
+Packet loss
+Bufferbloat symptoms
+Sudden latency spikes
+Unstable gateway latency
+Congestion
+Wireless instability
+Create an adaptive optimization mode for Wi-Fi users.
+When appropriate, prioritize route stability over an extremely small theoretical ping advantage.
+Show users a network-quality indicator:
+Excellent / Good / Fair / Poor
+Also distinguish:
+Local Wi-Fi issue
+from
+Internet routing issue
+Do not falsely claim EVOLAG can eliminate physical Wi-Fi interference.
+
+ETHERNET OPTIMIZATION
+Create a separate Ethernet-aware optimization profile.
+Ethernet users should receive:
+Low-overhead routing
+Low latency routing
+Packet-loss detection
+Jitter monitoring
+Congestion avoidance
+Automatic failover
+Detect whether the system is using Wi-Fi or Ethernet and optimize accordingly.
+
+ADAPTIVE ROUTING
+EVOLAG must continuously monitor the active route.
+Example:
+Initial route:
+Player → Relay A → Fortnite
+If Relay A becomes congested:
+Player → Relay B → Relay C → Fortnite
+The system should automatically evaluate alternatives.
+Route switching must use hysteresis and minimum thresholds to prevent constant route switching.
+Do not switch simply because another route is 1–2 ms faster.
+Only switch when the expected improvement is meaningful and stable.
+
+MULTI-HOP ROUTING
+Support intelligent multi-hop routing when it produces a measurable improvement.
+Example:
+Player → New York → Chicago → Fortnite
+instead of:
+Player → ISP → Fortnite
+The system should automatically determine whether:
+Single-hop is better
+Two-hop is better
+Multi-hop is worse
+Never add additional hops solely for complexity.
+
+GLOBAL EVOLAG RELAY NETWORK
+Build EVOLAG around a distributed relay infrastructure.
+Priority regions should include:
+North America
+New York
+Virginia
+Chicago
+Dallas
+Los Angeles
+Seattle
+Miami
+Atlanta
+Denver
+Phoenix
+Europe
+London
+Frankfurt
+Amsterdam
+Paris
+Stockholm
+Madrid
+Milan
+Additional Regions
+São Paulo
+Tokyo
+Singapore
+Sydney
+Dubai
+The architecture must allow additional nodes to be added without updating the client.
+
+NODE INTELLIGENCE
+Every relay should report:
+Latency
+Jitter
+Packet loss
+CPU
+RAM
+Bandwidth
+Connections
+Uptime
+Health
+Regional performance
+Automatically remove unhealthy or overloaded nodes from route selection.
+
+ROUTE BENCHMARKING
+Before activating optimization, EVOLAG should be capable of testing candidate routes.
+Example:
+Direct: 71 ms
+Route A: 48 ms
+Route B: 45 ms
+Route C: 52 ms
+Select the best practical route.
+Do not rely solely on ICMP ping.
+Where technically appropriate, use measurements representative of the actual traffic path.
+
+BASELINE COMPARISON
+Before optimization, measure the player's baseline network.
+Capture:
+Baseline ping
+Minimum ping
+Maximum ping
+Average ping
+Jitter
+Packet loss
+Then compare against EVOLAG.
+Dashboard example:
+FORTNITE — NAE
+Baseline
+72 ms
+EVOLAG
+29 ms
+Jitter
+4 ms
+Packet Loss
+0.1%
+Route
+Atlanta → Virginia → NAE
+
+LIGHTWEIGHT DESIGN
+EVOLAG must be extremely lightweight.
+This is a major product requirement.
+Target:
+Minimal CPU usage
+Minimal RAM usage
+Minimal disk usage
+Minimal startup time
+Minimal background activity
+Minimal Electron overhead
+Minimal network overhead
+The Electron UI should remain mostly idle while the native networking service handles optimization.
+Do not run unnecessary background animations, polling, browser processes, or heavyweight services.
+The networking service should be optimized for long gaming sessions.
+
+RESOURCE TARGETS
+Aim for approximately:
+Idle:
+CPU: <1–2%
+RAM: <150 MB total application footprint where practical
+Gaming:
+CPU: extremely low overhead
+RAM: minimal additional memory consumption
+These are engineering targets rather than absolute guarantees.
+
+PERFORMANCE PRIORITY
+Priority order:
+Network correctness
+Latency reduction
+Packet-loss reduction
+Jitter reduction
+Route stability
+Fast failover
+Low resource usage
+Security
+UI performance
+Extra features
+Do not sacrifice actual routing performance for visual effects.
+
+USER EXPERIENCE
+The main workflow should be extremely simple:
+Install → Launch → Select Fortnite → Select Region → Optimize → Play
+The primary button should be:
+OPTIMIZE FORTNITE
+When pressed:
+Detect network type
+Detect Fortnite
+Determine target region
+Measure baseline
+Test routes
+Select optimal route
+Activate optimization
+Monitor performance
+Automatically adapt when necessary
+
+MAIN DASHBOARD
+Display:
+Fortnite Region
+NAE / NAW / NAC / EU / etc.
+Current Ping
+Large central metric.
+Ping Improvement
+Example:
+-31 ms
+Network Quality
+Excellent / Good / Fair / Poor
+Route
+Example:
+New York → Virginia → Fortnite
+Jitter
+Example:
+3.2 ms
+Packet Loss
+Example:
+0.0%
+Connection State
+OPTIMIZED
+
+UI DESIGN
+Create a premium gaming application.
+Style:
+Dark
+Modern
+Minimal
+Fast
+Professional
+Clean
+Smooth
+Not overly flashy
+Navigation:
+Dashboard
+Fortnite
+Routes
+Network
+Statistics
+Servers
+Settings
+Account
+Use EVOLAG branding throughout.
+Display:
+EVOLAG
+Created by TONZENITH
+Owned by EVOSERVICES
+
+ELECTRON SECURITY
+Electron must follow modern security practices.
+Implement:
+Context isolation
+Disabled unsafe Node integration in renderer
+Secure preload APIs
+Strict IPC validation
+Content Security Policy
+Secure update verification
+Signed application builds
+Secure credential storage
+Never expose privileged native operations directly to arbitrary renderer code.
+
+WINDOWS SERVICE
+Create a dedicated EVOLAG Windows networking service.
+Responsibilities:
+Start/stop optimization
+Manage routing
+Manage tunnels
+Monitor network
+Monitor nodes
+Manage failover
+Collect local performance metrics
+Communicate securely with Electron
+The service should operate independently from the UI.
+Use least-privilege principles where possible.
+
+SETTINGS
+Include:
+Auto-start EVOLAG
+Auto-optimize Fortnite
+Preferred Fortnite region
+Automatic region detection
+Wi-Fi optimization
+Ethernet optimization
+Route aggressiveness
+Route switching threshold
+Preferred relay region
+Notifications
+Diagnostics
+Logging
+Privacy
+Kill switch
+Update settings
+Use intelligent defaults so most users never need to touch advanced settings.
+
+DIAGNOSTICS
+Create a built-in diagnostic tool.
+Test:
+Internet latency
+Gateway latency
+Packet loss
+Jitter
+DNS
+Route hops
+Network adapter
+Wi-Fi signal information where available
+Connection stability
+EVOLAG node performance
+Allow users to generate:
+EVOLAG NETWORK REPORT
+that can be exported for support.
+
+FAILSAFE
+If EVOLAG encounters an error:
+Fortnite must not be unnecessarily disconnected
+Routing should safely fall back when possible
+The service should recover automatically
+The user should receive a clear error
+No corrupted network configuration should remain after exit
+Provide a safe cleanup/reset mechanism.
+
+AUTO-UPDATES
+Implement secure automatic updates.
+Requirements:
+Version checking
+Signed packages
+Verified downloads
+Rollback support
+Failed-update recovery
+Background update preparation
+Clear version information
+Never execute unsigned or unverified update packages.
+
+BACKEND
+Build a scalable EVOSERVICES backend for:
+Authentication
+Account management
+Subscription status
+Node discovery
+Node health
+Route configuration
+Fortnite region data
+Feature flags
+Telemetry
+Diagnostics
+Software updates
+Do not put secret credentials or infrastructure credentials inside the Electron application.
+
+ADMIN PANEL
+Build an EVOLAG admin dashboard for EVOSERVICES.
+Show:
+Active players
+Active Fortnite sessions
+Node health
+Regional latency
+Packet loss
+Jitter
+Bandwidth
+Node utilization
+Route failures
+Service uptime
+Errors
+Geographic demand
+Administrators should be able to:
+Add nodes
+Remove nodes
+Disable nodes
+Configure regions
+Adjust routing policies
+Monitor infrastructure
+Manage supported Fortnite regions
+Manage feature flags
+
+PRIVACY
+Collect only necessary operational information.
+Never inspect unrelated user traffic.
+Separate:
+Required operational telemetry
+Optional analytics
+Account information
+Performance statistics
+Provide clear privacy settings.
+
+TESTING
+Create extensive automated testing.
+Test:
+Route selection
+Route scoring
+Multi-hop routing
+Failover
+Packet loss
+Jitter
+Node failure
+Congestion
+Wi-Fi conditions
+Ethernet conditions
+Fortnite process detection
+Fortnite region selection
+IPC security
+Windows service recovery
+Electron stability
+Memory leaks
+CPU utilization
+Update system
+Network cleanup
+Create simulated network conditions:
+20 ms latency
+50 ms latency
+100 ms latency
+Packet loss
+Jitter spikes
+Congestion
+Node failure
+ISP instability
+
+FINAL PRODUCT REQUIREMENT
+EVOLAG must be a real Fortnite network optimization product, not a visual mockup.
+The finished system should provide:
+Electron Windows application
++
+Native Windows networking service
++
+EVOLAG relay infrastructure
++
+Intelligent route selection
++
+Fortnite-specific optimization
++
+Wi-Fi optimization
++
+Ethernet optimization
++
+Real-time monitoring
++
+Automatic failover
++
+Lightweight resource usage
+The product experience should be:
+Open EVOLAG → Fortnite detected → Choose NAE/EU/NAW/etc. → EVOLAG benchmarks routes → Best route selected → Optimization activated → Ping/jitter/loss monitored continuously → Route automatically adapts when needed.
+The ultimate goal is to make EVOLAG one of the most technically advanced and lightweight Fortnite routing platforms possible while being honest about physical latency limits.
+BRANDING
+EVOLAG
+Created by TONZENITH
+Owned by EVOSERVICES
+Build the product as a legitimate commercial-grade Windows application, with networking performance and reliability taking priority over marketing claims or cosmetic features.
+
