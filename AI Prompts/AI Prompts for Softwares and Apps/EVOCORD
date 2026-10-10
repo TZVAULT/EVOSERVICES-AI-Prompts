@@ -1,0 +1,211 @@
+# EVOCORD — Lightweight Gaming Clipping Software
+
+**Created by TONZENITH**
+
+## Project Overview
+Create a fully functional, lightweight Windows clipping application named **EVOCORD**, designed specifically for low-end PCs, budget gaming systems, and computers that need to preserve as much in-game FPS as possible while recording gameplay.
+
+EVOCORD should deliver the essential features of modern gaming clipping software while remaining extremely lightweight, fast, and easy to use. Its primary goal is to let users capture gameplay moments without introducing significant FPS drops, stuttering, input lag, or unnecessary CPU and RAM usage.
+
+The application must be a real, working program, not a UI mockup or prototype.
+
+## 1. Core Recording Features
+
+- **Recording resolution:** 1280 × 720 (720p).
+- **Recording frame rate:** 60 FPS.
+- **Instant Replay:** Continuously maintain a rolling recording buffer and save the previous 30, 60, or 120 seconds when the user presses a hotkey.
+- **Manual Recording:** Start and stop recording gameplay at any time.
+- **Instant Clip Saving:** Save clips immediately without requiring users to manually edit or export them.
+- **Video Format:** MP4 with H.264 encoding where supported.
+- **Audio Capture:** Record game audio, with optional microphone recording.
+- **Audio Controls:** Allow users to enable, disable, and adjust game and microphone audio independently.
+- **Custom Clip Length:** Let users choose their preferred replay duration.
+- **Automatic File Naming:** Give each clip a unique filename containing the date and time.
+- **Recording Status:** Show whether recording or Instant Replay is active without displaying a large overlay.
+
+## 2. Extreme Performance Optimization
+
+EVOCORD must prioritize minimal performance impact over unnecessary visual effects or excessive features.
+
+Implement the following optimizations:
+
+- Prefer hardware-accelerated video encoding through supported NVIDIA NVENC, AMD AMF, and Intel Quick Sync hardware.
+- Provide a lightweight software-encoding fallback when hardware encoding is unavailable.
+- Use an efficient capture API appropriate for the Windows version and capture method, such as Windows Graphics Capture or Desktop Duplication where suitable.
+- Minimize CPU usage, memory allocation, background processing, and disk activity.
+- Use a memory-efficient rolling buffer for Instant Replay.
+- Avoid continuously writing unnecessary temporary video files to disk.
+- Prevent excessive GPU utilization and unnecessary rendering.
+- Keep the interface idle when not in use.
+- Avoid browser-based application frameworks and heavy background services unless they are demonstrably necessary.
+- Do not run unnecessary startup processes, telemetry, analytics, or background tasks.
+- Never sacrifice system stability or recording reliability for marginal performance gains.
+
+**Performance objective:** Make EVOCORD as lightweight as reasonably possible, with minimal measurable impact on gameplay FPS and frame times. Do not promise zero FPS loss; measure and document actual performance on representative low-end hardware.
+
+## 3. Simple, Modern User Interface
+
+Create a clean, compact interface with a dark gaming aesthetic.
+
+**Branding:**
+- Application name: EVOCORD
+- Creator credit: Made by TONZENITH
+- Theme: Dark charcoal and black with subtle electric-blue accents.
+- Design: Minimal, modern, responsive, and easy to navigate.
+- Animations: Minimal, with no unnecessary GPU-intensive effects.
+
+**Main dashboard:**
+- EVOCORD logo and branding.
+- Large, easy-to-use Save Clip button.
+- Instant Replay status indicator.
+- Start Recording and Stop Recording controls.
+- Current recording duration.
+- Selected resolution and FPS.
+- Audio status indicators.
+- Quick access to saved clips and settings.
+
+The interface must remain responsive on low-end computers and must not obstruct gameplay unnecessarily.
+
+## 4. Global Hotkeys
+
+Allow users to trigger important functions while gaming without switching windows.
+
+Provide configurable global hotkeys for:
+
+- Save Instant Replay.
+- Start Recording.
+- Stop Recording.
+- Pause or resume recording, if supported reliably.
+- Show or hide the EVOCORD overlay.
+- Enable or disable microphone capture.
+
+Prevent hotkey conflicts where possible, and allow users to customize every shortcut.
+
+## 5. Recording and Encoder Settings
+
+Provide a simple settings page with the following options:
+
+- Recording resolution: 720p by default.
+- Frame rate: 60 FPS by default.
+- Clip duration: 30, 60, or 120 seconds.
+- Video encoder selection: Automatic, NVIDIA, AMD, Intel, or Software, depending on hardware availability.
+- Video quality: Performance, Balanced, and High Quality.
+- Audio source selection and volume levels.
+- Microphone toggle.
+- Save folder selection.
+- Maximum storage allocation for the replay buffer.
+- Automatic cleanup of old clips, with user-configurable limits.
+- Launch on Windows startup, disabled by default.
+- Optional start-minimized behavior.
+
+Detect available hardware encoders automatically and clearly explain which encoder is active. Never display unavailable encoder options as if they are working.
+
+## 6. Saved Clips Library
+
+Build a lightweight clip library that lets users:
+
+- View saved recordings.
+- See clip thumbnails when available.
+- View clip duration, resolution, and file size.
+- Play clips using the system's default video player or a lightweight integrated player.
+- Open the clip's containing folder.
+- Rename or delete clips.
+- Copy a clip's file path.
+- Sort clips by date, duration, and file size.
+
+Do not re-encode videos merely to display them in the library.
+
+## 7. Windows Compatibility
+
+Target Windows 10 and Windows 11, with Windows 11 as the primary development target.
+
+- Support common low-end CPUs, integrated graphics, and systems with limited RAM.
+- Detect missing Windows media components and unsupported capture features gracefully.
+- Handle games running in windowed, borderless fullscreen, and supported fullscreen modes.
+- Provide clear error messages when a game or graphics API cannot be captured.
+- Use standard Windows APIs wherever possible.
+- Do not require administrator privileges for normal operation unless a specific feature genuinely requires them.
+- Do not modify Windows system files, disable security protections, or apply undocumented system tweaks.
+
+## 8. Reliability and Error Handling
+
+EVOCORD must behave like a production application.
+
+- Automatically detect capture and encoder initialization failures.
+- Prevent corrupted or incomplete recordings whenever possible.
+- Recover gracefully from application errors.
+- Display clear messages when disk space is low.
+- Handle unavailable microphones, disconnected audio devices, and missing save folders.
+- Avoid silently losing clips when the application closes unexpectedly.
+- Clean up temporary files safely.
+- Do not overwrite existing recordings.
+- Provide an option to recover or locate interrupted recordings when technically possible.
+
+## 9. Application Architecture
+
+Use a lightweight native Windows architecture. Prefer **C++ with Win32/WinUI components and Windows capture APIs**, or another demonstrably efficient native stack if it offers a clear advantage.
+
+Separate the application into focused components:
+
+- Capture engine.
+- Hardware encoder manager.
+- Instant Replay buffer.
+- Audio capture manager.
+- Global hotkey manager.
+- Recording and file management system.
+- User interface.
+- Configuration and settings manager.
+- Logging and diagnostics.
+
+Keep the capture pipeline independent of the UI so interface activity does not unnecessarily affect recording performance.
+
+## 10. Branding and Credits
+
+Display the following credit in the application’s About page and settings screen:
+
+**Made by TONZENITH**
+
+Use EVOCORD branding consistently across the application window, installer, icons, and any optional overlay.
+
+Create a custom application icon that is recognizable at small sizes.
+
+## 11. Deliverables
+
+Produce a complete, buildable Windows application project containing:
+
+- All required source code.
+- A complete project and folder structure.
+- Build scripts and dependency instructions.
+- Configuration files.
+- Application icons and branding assets.
+- A functional settings interface.
+- A working capture and encoding pipeline.
+- Instant Replay and manual recording.
+- Global hotkeys.
+- Clip library and file management.
+- Error handling and diagnostic logging.
+- Unit tests for core logic and integration tests for supported recording workflows.
+- A README with setup, build, troubleshooting, and usage instructions.
+- A release build configuration.
+- A Windows installer or portable executable packaging workflow.
+
+Do not leave core features as placeholders, pseudocode, fake buttons, or simulated functionality. If a feature depends on particular hardware or Windows capabilities, implement capability detection and a working fallback where feasible.
+
+## 12. Acceptance Criteria
+
+Consider EVOCORD complete only when the following can be demonstrated:
+
+1. It can capture supported gameplay and save real video files at 1280 × 720 and 60 FPS.
+2. Instant Replay saves the requested previous clip duration.
+3. Manual recording starts and stops correctly.
+4. Game audio and optional microphone audio work independently.
+5. Supported hardware encoders are detected and used correctly.
+6. Global hotkeys work while a supported game is in focus.
+7. Saved clips play correctly in a standard video player.
+8. The application remains stable during extended recording sessions.
+9. Memory usage, CPU usage, GPU usage, and frame-time impact are measured and documented on representative low-end systems.
+10. The application includes the exact creator credit: **Made by TONZENITH**.
+
+**Final objective:** Deliver EVOCORD as a genuine, lightweight, low-overhead gameplay clipping application that makes saving gaming highlights simple, fast, and reliable—even on lower-end Windows PCs.
+
+Build the functional application first, prioritize performance and stability, and add optional polish only after the recording pipeline works reliably.
