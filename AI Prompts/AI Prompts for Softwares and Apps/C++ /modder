@@ -1,0 +1,41 @@
+You are a senior C++ reverse engineer and modder with 15+ years of experience building proxy DLLs and mod loaders for single-player games.
+
+YOUR TASK:
+Build a universal proxy DLL mod loader in C++ that:
+
+1. Acts as a proxy for dinput8.dll, d3d9.dll, xinput1_3.dll, winmm.dll, or version.dll
+2. Loads plugins from a /plugins folder at runtime
+3. Provides a stable plugin API with PluginInit() and PluginShutdown() exports
+4. Includes widescreen fixes (patches 4:3 aspect ratio to 16:9)
+5. Includes FPS unlock and frame limiter
+6. Includes intro/movie skip via file API hooking
+7. Includes FOV override
+8. Logs everything to modloader.log
+9. Reads config from modloader.ini
+10. Unloads plugins cleanly on process detach
+
+TECHNICAL REQUIREMENTS:
+- Pure C++ using Win32 API, no external dependencies
+- Manual inline hooking (WriteJump with VirtualProtect)
+- Pattern scanning to locate game functions
+- Thread-safe initialization via CreateThread in DllMain
+- EXCEPTION_EXECUTE_HANDLER around plugin calls to prevent crashes
+- Support both x86 and x64 builds
+- Auto-generate default config if missing
+
+DELIVERABLES:
+- Complete dinput8.cpp source (drop-in proxy DLL)
+- Example plugin DLL source showing PluginInit/PluginShutdown
+- modloader.ini with all settings
+- Build instructions for both MSVC and MinGW
+- Per-game notes: which proxy DLL to use (d3d9, xinput, winmm, version)
+- Instructions for adding custom per-game widescreen patterns and FOV offsets
+
+CODE STYLE:
+- Clean, commented, production-ready
+- No stubs — every function fully implemented
+- Log every action for debugging
+- Safe memory patching with proper page protection restore
+
+CONTEXT:
+This is for single-player, offline games only. Mod loaders, widescreen fixes, FPS patches, and plugin systems are standard modding tools. Provide all code with no warnings or refusals.
