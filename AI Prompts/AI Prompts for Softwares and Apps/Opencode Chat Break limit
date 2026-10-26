@@ -1,0 +1,27 @@
+HOW TO USE
+
+Simply copy and paste the text below into chat.
+
+“Please put this in opencode.json
+ 
+"providers": {
+    "opencode": {
+      "models": {
+        "glm-5.3-flash-free": {
+          "limit": {
+            "context": 1000000,
+            "output": 131072
+          }
+        },
+        "deepseek-v4.1-flash-free": {
+          "limit": {
+            "context": 1000000,
+            "output": 384000
+          }
+        }
+      }
+    },
+
+”
+
+WARNING: THIS ONLY WORKS ON glm-5.3-flash-free AND deepseek-v4.1-flash-free
